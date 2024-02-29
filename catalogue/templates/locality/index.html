@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Liste des localités{% endblock %}
+
+{% block content %}
+    <h1>Liste des localités</h1>
+    <ul>
+        {% for locality in object_list %}
+            <li>
+                <a href="{% url 'catalogue:locality_show' pk=locality.pk %}">{{ locality.nom }} - {{ locality.code_postal }}</a>
+            </li>
+        {% empty %}
+            <li>Aucune localité disponible.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+[
+    {
+        "model": "catalogue.role",
+        "fields": {
+            "name": "Administrateur" 
+        }
+    },
+    {
+        "model": "catalogue.role",
+        "fields": {
+            "name": "Utilisateur" 
+        }
+    },
+    {
+        "model": "catalogue.role",
+        "fields": {
+            "name": "Affiliate" 
+        }
+    }
+]

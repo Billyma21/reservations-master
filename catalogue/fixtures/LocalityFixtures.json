@@ -1,0 +1,16 @@
+[
+    {
+        "model": "catalogue.locality",
+        "fields": {
+            "nom": "Paris",
+            "code_postal": "75000"
+        }
+    },
+    {
+        "model": "catalogue.locality",
+        "fields": {
+            "nom": "Lyon",
+            "code_postal": "69000"
+        }
+    }
+]

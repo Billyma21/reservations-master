@@ -71,20 +71,34 @@ TEMPLATES = [
 WSGI_APPLICATION = 'reservations.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'reservations',
-        'USER': 'ROOT',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'SOCKET': '/Applications/MAMP/tmp/mysql/mysql.sock',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",  # Assuming your SQLite database file is in the project's base directory
     }
 }
+
+
+
+
+# # Database local ---> phpmyadmin
+# # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'reservations',
+#         'USER': 'ROOT',
+#         'PASSWORD': '',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'SOCKET': '/Applications/MAMP/tmp/mysql/mysql.sock',
+#     }
+# }
 
 
 # Password validation
