@@ -1,12 +1,11 @@
 from django.views.generic import ListView, DetailView
+from catalogue.models import Role
 
-from catalogue.models import Locality
+class RoleListView(ListView):
+    model = Role
+    template_name = "role/index.html"
+    paginate_by = 10  
 
-class ListeLocalitesView(ListView):
-    model = Locality
-    template_name = "catalogue/index.html"
-
-class DetailLocaliteView(DetailView):
-    model = Locality
-    template_name = "catalogue/index.html"
-
+class RoleDetailView(DetailView):
+    model = Role
+    template_name = "role/index.html"

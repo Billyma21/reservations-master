@@ -17,10 +17,12 @@
                 <td>{{ artist.firstname }}</td>
                 <td>{{ artist.lastname }}</td>
             </tr>
+            
         {% empty %}
 	    <tr>
 	         <td colspan="2">Sorry, pas d'artist dans la database.</td>
 	    </tr>
+
         {% endfor %}
         </tbody>
     </table>
