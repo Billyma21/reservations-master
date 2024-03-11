@@ -8,17 +8,11 @@
     },
     {
         "model": "catalogue.locality",
-        "fields": {
-            "nom": "Lyon",
-            "code_postal": "69000"
-        }
-    },
-    {
-        "model": "catalogue.locality",
         "pk": 5,
         "fields": {
-            "nom": "AutreLocalite",
-            "code_postal": "XXXXX"
+            "nom": "NomLocalite",
+            "code_postal": "CodePostalLocalite"
         }
     }
+    
 ]
