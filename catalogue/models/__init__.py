@@ -5,6 +5,7 @@ from .type import *
 from .locality import *
 from .role import *
 from .location import *
+from .show import *
 
 
 # import direct unique

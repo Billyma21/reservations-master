@@ -1,20 +1,3 @@
-
-<!doctype html>
-<html lang="fr">
-    <head>
-		<meta charset="utf-8">
-        <title>Projet réservations - {% block title %}Bienvenue{% endblock %}</title>
-    </head>
-    <body>
-        <div class="container">
-            {% block content %}{% endblock %}
-        </div>
-    </body>
-</html> 
-
-
-
-{% comment %} 
 {% extends 'layouts/base.html' %}
 
 {% load static %}
@@ -33,12 +16,12 @@
 	{% if show.location %}
 	<p><strong>Lieu de création:</strong> {{ show.location.designation }}</p>
 	{% endif %}
-	
+        
 	<p><strong>Prix:</strong> {{ show.price }} €</p>
-    
+        
 	{% if show.bookable %}
 	<p><em>Réservable</em></p>
 	{% else %}
 	<p><em>Non réservable</em></p>
 	{% endif %}
-{% endblock %} {% endcomment %}
+{% endblock %}
