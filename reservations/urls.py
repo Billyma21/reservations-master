@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from catalogue.views import locality
+from catalogue.views import *
 
 urlpatterns = [
     path('catalogue/', include('catalogue.urls')),
