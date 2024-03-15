@@ -4,7 +4,11 @@
 
 <!-- templates/home/index.html- Bilal Maayoud -->
 
-{% include 'role/index.html' %}
+
+<h1>Contenu principal</h1>
+{% include 'show/index.html' with shows=shows %}
+
+{% include 'role/index.html' with roles=roles %}
 
 
 {% endblock %}
