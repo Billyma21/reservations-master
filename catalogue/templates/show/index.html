@@ -3,15 +3,24 @@
 {% block title %}Liste des spectacles{% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-    <ul>
-    {% for show in shows %}
-    <li><a href="{% url 'catalogue:show_show' show.id %}">{{ show.title }}</a>
-        {% if show.bookable %}
-            <span>{{ show.price }} €</span></li>
-        {% endif %}
-        </li>
-    {% endfor %}
-    </ul>
+    <h1 class="mb-4">{{ title }}</h1>
+    <div class="row">
+        {% for show in shows %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">{{ show.title }}</h5>
+                    <p class="card-text">
+                        {% if show.bookable %}
+                            Prix: {{ show.price }} €
+                        {% else %}
+                            Spectacle non réservable
+                        {% endif %}
+                    </p>
+                    <a href="{% url 'catalogue:show_show' show.id %}" class="btn btn-primary">Détails</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}
-

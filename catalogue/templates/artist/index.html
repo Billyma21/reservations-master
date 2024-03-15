@@ -3,27 +3,19 @@
 {% block title %}Liste des artistes{% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="list-group">
         {% for artist in artists %}
-            <tr>
-                <td>{{ artist.firstname }}</td>
-                <td>{{ artist.lastname }}</td>
-            </tr>
-            
+            <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ artist.firstname }} {{ artist.lastname }}</h5>
+                </div>
+            </a>
         {% empty %}
-	    <tr>
-	         <td colspan="2">Sorry, pas d'artist dans la database.</td>
-	    </tr>
-
+            <a href="#" class="list-group-item list-group-item-action disabled">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Désolé, aucun artiste n'est disponible.</h5>
+                </div>
+            </a>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
 {% endblock %}

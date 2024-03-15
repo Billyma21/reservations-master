@@ -3,14 +3,19 @@
 {% block title %}Liste des localités{% endblock %}
 
 {% block content %}
-    <h1>Liste des localités</h1>
-    <ul>
+    <div class="list-group">
         {% for locality in object_list %}
-            <li>
-                <a href="{% url 'catalogue:locality_show' pk=locality.pk %}">{{ locality.nom }} - {{ locality.code_postal }}</a>
-            </li>
+            <a href="{% url 'catalogue:locality_show' pk=locality.pk %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ locality.nom }} - {{ locality.code_postal }}</h5>
+                </div>
+            </a>
         {% empty %}
-            <li>Aucune localité disponible.</li>
+            <a href="#" class="list-group-item list-group-item-action disabled">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Aucune localité disponible.</h5>
+                </div>
+            </a>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

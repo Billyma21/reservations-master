@@ -3,14 +3,25 @@
 {% block title %}Liste des lieux de spectacle{% endblock %}
 
 {% block content %}
-    <h1>{{ title }}</h1>
-    <ul>
-    {% for location in locations %}
-        <li>{{ location.designation }}
-        {% if location.website %}
-            - <a href="{{ location.website }}">{{ location.website }}</a></li>
-        {% endif %}
-        </li>
-    {% endfor %}
-    </ul>
+    <div class="container mb-5">
+        <h1 class="mb-4">{{ title }}</h1>
+        <div class="card">
+            <div class="card-body">
+                {% for location in locations %}
+                    <div class="card mb-3">
+                        <div class="card-header">{{ location.designation }}</div>
+                        <div class="card-body">
+                            {% if location.website %}
+                                <p class="card-text"><a href="{{ location.website }}">{{ location.website }}</a></p>
+                            {% else %}
+                                <p class="card-text">Aucun site web disponible.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>Aucun lieu de spectacle disponible.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

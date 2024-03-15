@@ -1,5 +1,4 @@
-
- <!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="utf-8">
@@ -8,87 +7,75 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/10b9094114.js"></script>
-	
-</head>
-<body>
-<!-------------------Navbar - Bilal Maayoud ----------------------->
-
-	<nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"><i class="fas fa-home"></i>Catalogue</a>
-            <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                
-                <ul class="navbar-nav ml-auto">
-
-					<li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:artist_index' %}">Liste des artistes</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:location_index' %}">Emplacements</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:locality_index' %}">Localités</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:role_index' %}">Rôles</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:type_index' %}">Liste des types</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container">
-        {% block content %}{% endblock %}
-    </div>
-
-<!----------------- Footer - Bilal Maayoud ----------------->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Projet réalisé par Maayoud Bilal</p>
-            <p class="m-0 text-center text-white"></p>
-            <p class="m-0 text-center text-white">Projet d'intégration de développement 2023-2024 | Institut des Carrières Commerciales</p>
-        </div>
-    </footer>
-
-	<style>
-         body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .content {
-            flex: 1;
-	
+    <style>
+        /* Ajout de styles CSS personnalisés */
+        body {
+            padding-bottom: 100px; /* Espace en bas pour le footer */
         }
         footer {
-            width: 100%;
             position: fixed;
             bottom: 0;
-            background-color: #343a40; 
-            color: #ffffff; 
+            width: 100%;
+            background-color: #343a40;
+            color: #ffffff;
             padding: 10px 0;
             text-align: center;
         }
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 200px; /* Espace en bas pour le footer sur les petits écrans */
+            }
+        }
     </style>
+</head>
+<body>
+<!-------------------Navbar - Bilal Maayoud ----------------------->
+<nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"><i class="fas fa-home"></i> Catalogue</a>
+        <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalogue:artist_index' %}">Liste des artistes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalogue:location_index' %}">Emplacements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalogue:locality_index' %}">Localités</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalogue:role_index' %}">Rôles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'catalogue:type_index' %}">Liste des types</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-    <!-- Bootstrap core JavaScript - /navbar  -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- Main Content -->
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<!----------------- Footer - Bilal Maayoud ----------------->
+<footer class="py-3 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Projet réalisé par Maayoud Bilal</p>
+        <p class="m-0 text-center text-white">Projet d'intégration de développement 2023-2024 | Institut des Carrières Commerciales</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-
