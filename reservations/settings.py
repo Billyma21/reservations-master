@@ -43,9 +43,22 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
+
 # BM - Auth redirection -> page acceile home_index
 LOGOUT_REDIRECT_URL = '/catalogue/home/index/'
 
+# Redirection de mot de passe/mail est invalide
+PASSWORD_RESET_INVALID_LINK_TEMPLATE = 'accounts/password_reset_invalid_link.html'
+
+# Bilal ma - Envoie de mail - config
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Pour envoyer via mail / Le mail est crée pour l'occasion  
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'studenticc49@gmail.com' # Bilal Maa - adresse mail du projet 
+# EMAIL_HOST_PASSWORD = 'helloicc1190'  # Mot de passe de l'adresse mail
 
 
 MIDDLEWARE = [
