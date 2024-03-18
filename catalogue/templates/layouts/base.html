@@ -29,7 +29,7 @@
     </style>
 </head>
 <body>
-<!-------------------Navbar - Bilal Maayoud ----------------------->
+<!------------------- Navbar - Bilal Maayoud ----------------------->
 <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"><i class="fas fa-home"></i> Catalogue</a>
@@ -38,6 +38,20 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
+
+<!------------------- Auth - Bilal Maayoud ----------------------->
+
+        {% if user.is_authenticated %}
+            <p>Connecté sous {{ user.username }} | <a href="{% url 'accounts:logout' %}">Déconnexion</a></p>
+            {% else %}
+                <p><a href="{% url 'accounts:login' %}">Connexion</a> | 
+                <a href="{% url 'accounts:register' %}">Inscription</a></p>
+        {% endif %}
+
+<!-------------------FIN - Auth - Bilal Maayoud ----------------------->
+
+
+{% comment %} 
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
                 </li>
@@ -56,10 +70,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'catalogue:type_index' %}">Liste des types</a>
                 </li>
-            </ul>
+            </ul> {% endcomment %}
         </div>
     </div>
 </nav>
+<!-------------------FIN - Navbar - Bilal Maayoud ----------------------->
 
 <!-- Main Content -->
 <div class="container">
@@ -73,6 +88,7 @@
         <p class="m-0 text-center text-white">Projet d'intégration de développement 2023-2024 | Institut des Carrières Commerciales</p>
     </div>
 </footer>
+<!-----------------Fin - Footer - Bilal Maayoud ----------------->
 
 <!-- Bootstrap core JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

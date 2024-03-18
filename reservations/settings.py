@@ -39,7 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalogue',
+    #BM - Auth
+    'accounts',
 ]
+
+# BM - Auth redirection -> page acceile home_index
+LOGOUT_REDIRECT_URL = '/catalogue/home/index/'
 
 
 

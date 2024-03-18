@@ -10,15 +10,11 @@ from django.urls import path, include
 from . import views
 from .views import *
 from .views import show 
+# from django.contrib.auth import views as auth_views
 
 app_name='catalogue'
 
 urlpatterns = [
-    #Bilal - Pour vu sur Admin
-    # path('admin/', admin.site.urls),
-    # #Bilal - Pour vu sur catalogue
-    # path('', include('catalogue.urls')),
-    # path('', views.home.index, name='home'),
     path('', views.home.index, name='home_index'),
     #Bilal - Pour vu sur artist
     path('artist/', views.artist.index, name='artist_index'),
@@ -40,6 +36,8 @@ urlpatterns = [
     # path('show/<int:show_id>', views.show.show, name='show_show'),
     path('show/', views.show, name='show_index'),
     path('show/<int:show_id>/', views.show, name='show_show'),
+    #Bilal Maayoud - Authentifaction 
+    # path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
 
 
 ]

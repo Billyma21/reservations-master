@@ -1,0 +1,73 @@
+<!-- Bilal Maayoud - login standard django -->
+
+{% comment %} <h1>Connexion</h1>
+
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.username.label_tag }}
+    {{ form.username }}
+    <br>
+    {{ form.password.label_tag }}
+    {{ form.password }}
+    <br>
+    <input type="submit" value="Se connecter">
+</form> {% endcomment %}
+
+<!-- Bilal Maayoud - login -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+        body {
+            background-color: #f8f9fa; /* Couleur de fond */
+        }
+        .card {
+            margin-top: 50px; /* Marge supérieure */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="text-center">Connexion</h1>
+                    </div>
+                    <div class="card-body">
+                        {% for message in messages %}
+                            <div class="alert alert-info" role="alert">{{ message }}</div>
+                        {% endfor %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_username">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="id_username" name="username" placeholder="Nom d'utilisateur">
+                            </div>
+                            <div class="form-group">
+                                <label for="id_password">Mot de passe</label>
+                                <input type="password" class="form-control" id="id_password" name="password" placeholder="Mot de passe">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

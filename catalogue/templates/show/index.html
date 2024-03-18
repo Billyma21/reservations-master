@@ -4,6 +4,18 @@
 
 {% block content %}
     <h1 class="mb-4">{{ title }}</h1>
+    {% comment %} <form method="GET" action="{% url 'catalogue:show_index' %}" class="mb-4">
+        <div class="form-group">
+            <label for="sort">Trier par :</label>
+            <select id="sort" name="sort" class="form-control">
+                <option value="price">Prix</option>
+                <option value="date">Date</option>
+                <option value="title">Titre</option>
+                <!-- Ajoutez d'autres options de tri si nécessaire -->
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Appliquer</button>
+    </form> {% endcomment %}
     <div class="row">
         {% for show in shows %}
         <div class="col-md-4 mb-4">

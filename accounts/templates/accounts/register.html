@@ -1,0 +1,97 @@
+
+<!-- Bilal Maayoud - register -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S'inscrire</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .btn-inscrire {
+            width: 188px; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="text-center">S'inscrire</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="form-group row">
+                                <label for="id_username" class="col-sm-4 col-form-label text-sm-right">Nom d'utilisateur</label>
+                                <div class="col-sm-8">
+                                    {{ form.username }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="id_first_name" class="col-sm-4 col-form-label text-sm-right">Prénom</label>
+                                <div class="col-sm-8">
+                                    {{ form.first_name }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="id_last_name" class="col-sm-4 col-form-label text-sm-right">Nom</label>
+                                <div class="col-sm-8">
+                                    {{ form.last_name }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="id_email" class="col-sm-4 col-form-label text-sm-right">Adresse e-mail</label>
+                                <div class="col-sm-8">
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="id_password1" class="col-sm-4 col-form-label text-sm-right">Mot de passe</label>
+                                <div class="col-sm-8">
+                                    {{ form.password1 }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="id_password2" class="col-sm-4 col-form-label text-sm-right">Confirmer le mot de passe</label>
+                                <div class="col-sm-8">
+                                    {{ form.password2 }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8 offset-sm-4">
+                                    <button type="submit" class="btn btn-primary btn-inscrire">Je m'inscris !!</button>
+                                </div>
+                            </div>
+                        </form>
+                        {% if form.errors %}
+                            <div class="mt-3">
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <div class="invalid-feedback">
+                                            <i class="fas fa-exclamation-circle"></i>{{ error }}
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- FontAwesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>
