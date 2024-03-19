@@ -36,9 +36,9 @@ urlpatterns = [
     # path('show/<int:show_id>', views.show.show, name='show_show'),
     path('show/', views.show, name='show_index'),
     path('show/<int:show_id>/', views.show, name='show_show'),
-    #Bilal Maayoud - Authentifaction 
-    # path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
-
-
+    #Bilal Maayoud - Authentifaction dans accounts/  
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

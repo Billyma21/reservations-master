@@ -1,5 +1,4 @@
 {% extends 'layouts/base.html' %}
-
 {% load static %}
 
 {% block title %}{{ show.title }}{% endblock %}
@@ -12,10 +11,10 @@
                 <div class="card-body">
                     <h1 class="card-title">{{ show.title }}</h1>
 
-                    {% if show.poster_url %}
-                    <img src="{% static 'catalogue/images/' %}{{ show.poster_url }}" class="img-fluid mb-3" alt="{{ show.title }}">
+                    {% if show.poster %}
+                    <img src="{{ show.poster.url }}" class="img-fluid mb-3" alt="{{ show.title }}">
                     {% else %}
-                    <canvas width="200" height="100" style="border:1px solid #000000;"></canvas>
+                    <p>Aucune image disponible</p>
                     {% endif %}
 
                     {% if show.location %}
