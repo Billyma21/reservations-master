@@ -1,0 +1,34 @@
+[
+    {
+        "model": "catalogue.collaboration",
+        "pk": 1,
+        "fields": {
+            "artist_type": 1,
+            "show": 1
+        }
+    },
+    {
+        "model": "catalogue.collaboration",
+        "pk": 2,
+        "fields": {
+            "artist_type": 2,
+            "show": 2
+        }
+    },
+    {
+        "model": "catalogue.collaboration",
+        "pk": 3,
+        "fields": {
+            "artist_type": 3,
+            "show": 3
+        }
+    },
+    {
+        "model": "catalogue.collaboration",
+        "pk": 4,
+        "fields": {
+            "artist_type": 4,
+            "show": 4
+        }
+    }
+]

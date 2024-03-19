@@ -6,6 +6,9 @@ from .locality import *
 from .role import *
 from .location import *
 from .show import *
+from .ArtistType import *
+from .collaboration import *
+
 
 
 # import direct unique
