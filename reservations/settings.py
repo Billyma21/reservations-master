@@ -38,11 +38,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #BM - Catalogue
     'catalogue',
     #BM - Auth
     'accounts',
+    #BM - Filtre
+    # 'django_filters',
+    #BM - Bootstrap5
+    # 'bootstrap5',
+
 ]
 
+#BM - Pour bootstrap@5.3.0 
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# STATICFILES_DIRS = [
+#     BASE_DIR / "node_modules/bootstrap/dist",
+# ]
+
+ROOT_URLCONF = 'catalogue.urls'  
 
 # BM - Auth redirection -> page acceile home_index
 LOGOUT_REDIRECT_URL = '/catalogue/home/index/'
