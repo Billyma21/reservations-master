@@ -1,38 +1,64 @@
-{% comment %} {% extends 'layouts/base.html' %} {% endcomment %}
-
-{% block title %}Liste des spectacles{% endblock %}
-
+<!-- Bilal Ma - Show/index.html -->
 {% block content %}
     <h1 class="mb-4">{{ title }}</h1>
-    {% comment %} <form method="GET" action="{% url 'catalogue:show_index' %}" class="mb-4">
-        <div class="form-group">
-            <label for="sort">Trier par :</label>
-            <select id="sort" name="sort" class="form-control">
-                <option value="price">Prix</option>
-                <option value="date">Date</option>
-                <option value="title">Titre</option>
-                <!-- Ajoutez d'autres options de tri si nécessaire -->
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Appliquer</button>
-    </form> {% endcomment %}
-    <div class="row">
-        {% for show in shows %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <h5 class="card-title">{{ show.title }}</h5>
-                    <p class="card-text">
-                        {% if show.bookable %}
-                            Prix: {{ show.price }} €
-                        {% else %}
-                            Spectacle non réservable
-                        {% endif %}
-                    </p>
-                    <a href="{% url 'catalogue:show_show' show.id %}" class="btn btn-primary">Détails</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+    <a href="{% url 'catalogue:view_cart' %}" class="btn btn-primary">Voir le panier</a>
+    <!-- Tableau des spectacles -->
+    <table id="myTable" class="table">
+        <thead>
+            <tr>
+                <th scope="col">N°</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Description</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Réservable</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for show in shows %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ show.title }}</td>
+                <td>{{ show.description }}</td>
+                <td>
+                    {% if show.price %}
+                        {{ show.price }} €
+                    {% else %}
+                        Gratuit
+                    {% endif %}
+                </td>
+                <td>
+                    {% if show.bookable %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+                <td>
+                    <form action="{% url 'catalogue:add_to_cart' show.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" min="1" value="1">
+                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+    <!-- Include DataTables JS -->
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <!-- Initialize DataTable -->
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable();
+        } );
+    </script>
 {% endblock %}

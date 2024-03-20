@@ -8,6 +8,7 @@ from .location import *
 from .show import *
 from .ArtistType import *
 from .collaboration import *
+from .Cart import *
 
 
 

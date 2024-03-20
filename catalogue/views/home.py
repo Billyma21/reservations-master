@@ -1,19 +1,26 @@
-# fichier views.py
+# Dans le fichier views.py
 
 from django.shortcuts import render
+from django import forms
 from catalogue.models import Role, Show
 
-# Bilal Maayoud - Home page catalogue 
-
 def index(request):
-    # Récupérer les données des rôles depuis le modèle Role
     roles = Role.objects.all()
-    
-    # Récupérer les données des spectacles depuis le modèle Show
     shows = Show.objects.all()
-    
-    # Fournir les données dans le contexte
-    context = {'roles': roles, 'shows': shows}
-    
-    # Rendre le modèle principal en passant le contexte
+
+    # BM- Barre de recherche de filtre directement dans la vue
+    class ShowFilterForm(forms.Form):
+        search = forms.CharField(label='Recherche', max_length=100, required=False)
+
+    # Traitement du formulaire de filtre
+    if request.method == 'GET':
+        form = ShowFilterForm(request.GET)
+        if form.is_valid():
+            search = form.cleaned_data.get('search')
+            if search:
+                shows = shows.filter(title__icontains=search)
+    else:
+        form = ShowFilterForm()
+
+    context = {'roles': roles, 'shows': shows, 'form': form}
     return render(request, 'home/index.html', context)

@@ -1,0 +1,40 @@
+<!--Bilal Ma -  Pour ajoter au panier pour paiement  cart/cart.html  -->
+{% block content %}
+    <h1 class="mb-4">Votre panier</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Spectacle</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix unitaire</th>
+                <th scope="col">Prix total</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.title }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.price }} €</td>
+                <td>{{ item.total_price }} €</td>
+                <td>
+                    <form action="{% url 'catalogue:remove_from_cart' item.show.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" min="1" max="{{ item.quantity }}" value="1">
+                        <button type="submit" class="btn btn-danger">Supprimer du panier</button>
+                    </form>                  
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="3">Total</td>
+                <td>{{ cart.get_total_price }} €</td>
+            </tr>
+            <a href="{% url 'catalogue:show_index' %}" class="btn btn-primary">Retour à la liste des spectacles</a>
+
+        </tbody>
+        
+    </table>
+{% endblock %}

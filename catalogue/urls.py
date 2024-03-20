@@ -36,7 +36,12 @@ urlpatterns = [
     # path('show/<int:show_id>', views.show.show, name='show_show'),
     path('show/', views.show, name='show_index'),
     path('show/<int:show_id>/', views.show, name='show_show'),
-    #Bilal Maayoud - Authentifaction dans accounts/  
+    #Bilal Ma - Authentifaction dans accounts/ 
+    #Bilal ma - Add au panier pour paiement / Remove/ Del/ Add/ ..
+    path('add_to_cart/<int:pk>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/', views.view_cart, name='view_cart'), 
+    path('remove_from_cart/<int:pk>/', remove_from_cart, name='remove_from_cart'),
+
 ]
 
 if settings.DEBUG:

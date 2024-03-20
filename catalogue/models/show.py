@@ -1,7 +1,7 @@
 from django.db import models
 from .location import *
 
-# Create your models here.
+# Bm - Models show
 class Show(models.Model):
     # Clé primaire
     id = models.BigAutoField(primary_key=True, verbose_name="ID_spectacle")
