@@ -3,6 +3,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponseBadRequest
 from catalogue.models import Show, Cart
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+
 
 def index(request):
      # Récupérer uniquement les spectacles réservables + fltre
@@ -14,7 +17,7 @@ def index(request):
         'title': title
     })
 
-#Bilal Maayoud - Show/show.html
+#Bilal Ma - Show/show.html
 
 def show(request, show_id=None):
     if show_id:
@@ -30,8 +33,41 @@ def show(request, show_id=None):
         title = 'Liste des spectacles'
         return render(request, 'show/index.html', {'shows': shows, 'title': title})
 
+
+
+#<!--Bilal Ma-panier-cart.html--->
 #Bm - add au pannier un spectacle/ add,delet,remove,ect...
 
+@login_required
+def remove_from_cart(request, pk):
+    if request.method == 'POST':
+        quantity = int(request.POST.get('quantity', 1))
+        try:
+            show = Show.objects.get(pk=pk)
+        except Show.DoesNotExist:
+            raise Http404('Spectacle inexistant')
+        cart = Cart(request)
+        if 'remove' in request.POST:
+            cart.remove(show, quantity)
+            messages.success(request, f"{quantity} {show.title}(s) removed from your cart.")
+        else:
+            cart.add(show, quantity)
+            messages.success(request, f"{quantity} {show.title}(s) added to your in cart.")
+        
+        # Rediriger vers la page actuelle
+        return redirect(request.META.get('HTTP_REFERER', 'catalogue:view_cart'))
+    else:
+        return HttpResponseBadRequest("Méthode non autorisée")
+
+
+#Bm - Permission pour voir panier 
+@login_required
+def view_cart(request):
+    cart = Cart(request)
+    return render(request, 'cart/cart.html', {'cart': cart})
+
+#Bm - permission pour add panier
+@login_required       
 def add_to_cart(request, pk):
     if request.method == 'POST':
         quantity = int(request.POST.get('quantity', 1))
@@ -45,23 +81,11 @@ def add_to_cart(request, pk):
         return redirect('catalogue:show_index')
     else:
         return HttpResponseBadRequest("Méthode non autorisée")
+    
+#Bm - Dans panier, add, remove, prix totale, ect  
+#Bm - Permission pour agire dans panier  
 
-def view_cart(request):
-    cart = Cart(request)
-    return render(request, 'cart/cart.html', {'cart': cart})
-
-def remove_from_cart(request, pk):
-    if request.method == 'POST':
-        show = get_object_or_404(Show, pk=pk)
-        quantity = int(request.POST.get('quantity', 1))
-        cart = Cart(request)
-        cart.remove(show, quantity)
-        messages.success(request, f"{quantity} {show.title}(s) removed from your cart.")
-        return redirect('catalogue:view_cart')
-    else:
-        return HttpResponseBadRequest("Méthode non autorisée")
-
-# Bm - add au pannier un spectacle/ add,delet,remove,ect...
+@login_required
 class Cart:
     def __init__(self, request):
         """
@@ -141,4 +165,3 @@ class Cart:
             else:
                 self.cart[show_id]['quantity'] -= quantity
             self.save()
-

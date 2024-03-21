@@ -35,7 +35,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    <form action="{% url 'catalogue:add_to_cart' show.id %}" method="post">
+                    <form action="{% url 'catalogue:remove_from_cart' show.id %}" method="post">
                         {% csrf_token %}
                         <input type="number" name="quantity" min="1" value="1">
                         <button type="submit" class="btn btn-primary">Ajouter au panier</button>
