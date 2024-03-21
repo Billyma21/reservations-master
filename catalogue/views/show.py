@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponseBadRequest
 from catalogue.models import Show, Cart
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 
@@ -165,3 +166,9 @@ class Cart:
             else:
                 self.cart[show_id]['quantity'] -= quantity
             self.save()
+
+    def get_items(self):
+        """
+        Renvoie les articles du panier.
+        """
+        return self.cart.values()
