@@ -1,8 +1,11 @@
-<!--Bilal Ma -  Pour ajoter au panier pour paiement  cart/cart.html  -->
+
+
+<!--Bilal Ma -  Pour ajoter au panier   cart/cart.html  -->
 {% block content %}
     <h1 class="mb-4">Votre panier</h1>
 
     <table class="table">
+        
         <thead>
             <tr>
                 <th scope="col">Spectacle</th>
@@ -23,9 +26,11 @@
                     <form action="{% url 'catalogue:remove_from_cart' item.show.id %}" method="post">
                         {% csrf_token %}
                         <input type="number" name="quantity" min="1" max="{{ item.quantity }}" value="1">
-                        <button type="submit" class="btn btn-danger">Supprimer du panier</button>
-                    </form>                  
+                        <button type="submit" class="btn btn-danger" name="remove">Supprimer du panier</button>
+                        <button type="submit" class="btn btn-success" name="add">Ajouter</button>
+                    </form>            
                 </td>
+
             </tr>
             {% endfor %}
             <tr>
@@ -36,5 +41,12 @@
 
         </tbody>
         
+        
     </table>
+
+    <form method="post" action="{% url 'catalogue:make_payment' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Procéder au paiement</button>
+      </form>
+    
 {% endblock %}
