@@ -1,0 +1,13 @@
+<!-- Bilal Ma - cart/payment_success.html -->
+
+
+{% block content %}
+
+    <h1>Félicitations, votre paiement a été traité avec succès.</h1>
+    <h2>L'équipe Students-Icc vous remercie pour votre commande.</h2>
+
+    <h3>Résumé de la commande :</h3>
+    <p>Total : {{ order.total_amount }} €</p>
+    <p>Méthode de paiement : {{ order.payment_method }}</p>
+
+{% endblock %}

@@ -11,6 +11,7 @@ from . import views
 from .views import *
 from .views import show 
 # from django.contrib.auth import views as auth_views
+from .views import payment
 
 app_name='catalogue'
 
@@ -37,12 +38,17 @@ urlpatterns = [
     path('show/', views.show, name='show_index'),
     path('show/<int:show_id>/', views.show, name='show_show'),
     #Bilal Ma - Authentifaction dans accounts/ 
-    #Bilal ma - Add au panier pour paiement / Remove/ Del/ Add/ ..
+    #Bilal ma - Add au panier / Remove/ Del/ Add/ ..
     path('add_to_cart/<int:pk>/', views.add_to_cart, name='add_to_cart'),
     path('cart/', views.view_cart, name='view_cart'), 
     path('remove_from_cart/<int:pk>/', remove_from_cart, name='remove_from_cart'),
-
+    #Bilal ma -  pour passage au paiement
+    path('payment/', views.make_payment, name='make_payment'),
+    path('payment/success/', views.payment_success, name='payment_success'),
+    # path('payment/checkout_summary/', views.checkout_summary, name='checkout_summary'),
+   
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
