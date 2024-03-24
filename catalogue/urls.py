@@ -45,7 +45,7 @@ urlpatterns = [
     #Bilal ma -  pour passage au paiement
     path('payment/', views.make_payment, name='make_payment'),
     path('payment/success/', views.payment_success, name='payment_success'),
-    # path('payment/checkout_summary/', views.checkout_summary, name='checkout_summary'),
+    path('payment/checkout_summary/', views.checkout_summary, name='checkout_summary'),
    
 ]
 

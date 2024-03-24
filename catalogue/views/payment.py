@@ -77,7 +77,7 @@ def make_payment(request):
 @login_required
 def payment_success(request):
     last_order = Order.objects.last()
-    return render(request, 'payment_success.html', {'order': last_order})
+    return render(request, 'cart/payment_success.html', {'order': last_order})
 
 from catalogue.models import Cart
 
