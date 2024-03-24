@@ -13,6 +13,9 @@ from .views import show
 # from django.contrib.auth import views as auth_views
 from .views import payment
 
+#EA-import pour rss
+#from .feed import LatestEntriesFeed
+
 app_name='catalogue'
 
 urlpatterns = [
@@ -47,6 +50,10 @@ urlpatterns = [
     path('payment/success/', views.payment_success, name='payment_success'),
     # path('payment/checkout_summary/', views.checkout_summary, name='checkout_summary'),
    
+    #Edward A - chemin du feed rss
+    #path('feed/', LatestEntriesFeed(), name='rssfeed'),
+    path('artist_pdf/', views.artist_pdf, name='artist_pdf'),
+
 ]
 
 
