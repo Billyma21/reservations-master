@@ -6,7 +6,13 @@
 <h2>L'équipe Students-Icc vous remercie pour votre commande.</h2>
 
 <h3>Résumé de la commande :</h3>
-{% comment %}
+
 <p>Total : {{ order.total_amount }} €</p>
 <p>Méthode de paiement : {{ order.payment_method }}</p>
-{% endcomment %} {% endblock %}
+
+<button>
+  <a href="{% url 'catalogue:home_index' %}" class="btn btn-primary">
+    Retour à la page d'accueil
+  </a>
+</button>
+{% endblock %}
