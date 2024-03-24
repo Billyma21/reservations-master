@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     #BM - Bootstrap5
     # 'bootstrap5',
 
+    #EA - django import export
+    'import_export',
+
 ]
 
 #BM - Pour bootstrap@5.3.0 
