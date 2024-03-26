@@ -1,14 +1,20 @@
 
 # Bilal Ma - Auth Accounts 
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages 
 #BM - Formulaire personnalisé - /-->forms
 from .forms import UserRegistrationForm
 from django.urls import reverse_lazy
-from .forms import CustomPasswordResetForm
+from .forms import *
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+#BM - Changer, depuis le compte, le mt_passe & pseudo
+from .forms import ChangeUsernameForm
+# from django.http import JsonResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required 
 
 
 
@@ -65,3 +71,35 @@ class CustomPasswordResetConfirmView(PasswordResetConfirmView):
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'accounts/password_reset_complete.html'
     
+    from django.contrib.auth import update_session_auth_hash
+
+
+#Billy Ma - niquement pou utilisateur connecter.
+# # Billy Ma -  pour changer le mot de passe, lorsqu'on est co
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, ("Votre mot de passe a été changé avec succès."))
+            return redirect('profil')
+    else:
+        form = CustomPasswordChangeForm(request.user)
+    return render(request, 'change_password.html', {'form': form})
+
+# Billy-ma pour changer le pseudo, lorsqu'on est co
+@login_required
+def change_username(request):
+    if request.method == 'POST':
+        form = ChangeUsernameForm(request.POST)
+        if form.is_valid():
+            new_username = form.cleaned_data['new_username']
+            request.user.username = new_username
+            request.user.save()
+            messages.success(request, 'Votre pseudo a été modifié avec succès !')
+            return redirect('catalogue:home_index')
+    else:
+        form = ChangeUsernameForm()
+    return render(request, 'change_username.html', {'form': form})

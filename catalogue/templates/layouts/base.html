@@ -58,6 +58,18 @@
                     <a class="nav-link"  href="{% url 'accounts:register' %}">Inscription</a></p>
                           {% endif %}
                 </li>
+        <!-------------------BM - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'accounts:change_password' %}" class="nav-link">Changer le mot de passe</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'accounts:change_username' %}" class="nav-link">Changer de pseudo</a>                    
+                </li>
+            {% endif %}
+        <!-------------------Fin - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
                 </li>

@@ -16,4 +16,10 @@ urlpatterns = [
     path('password-reset/done/', views.CustomPasswordResetDoneView.as_view(), name='password_reset_done'),
     path('password-reset-confirm/<uidb64>/<token>/', views.CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('password-reset-complete/', views.CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    #Bilal ma - Change mots de passe ou pseudo, quand utilisateur est Co : 
+    path('password-change/', views.change_password, name='change_password'),
+    path('change-username/', views.change_username, name='change_username'),
+
+
 ]
+

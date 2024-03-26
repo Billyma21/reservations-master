@@ -1,28 +1,27 @@
 <!-- Bilal ma - cart/checkout_summary.html -->
 
-    <h1>Votre résumé de panier</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Spectacle</th>
-                <th>Quantité</th>
-                <th>Prix unitaire</th>
-                <th>Prix total</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in cart %}
-                <tr>
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.price }} €</td>
-                    <td>{{ item.total_price }} €</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <form method="post" action="{% url 'catalogue:payment_success' %}">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-primary">Valider le paiement</button>
-    </form> 
-    
+<h1>Votre résumé de panier</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Spectacle</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Prix total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cart_items %}
+        <tr>
+            <td>{{ item.title }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }} €</td>
+            <td>{{ item.total_price }} €</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<form method="post" action="{% url 'catalogue:payment_success' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Valider le paiement</button>
+</form>

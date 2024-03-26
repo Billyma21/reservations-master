@@ -165,10 +165,106 @@ class Cart:
                 del self.cart[show_id]
             else:
                 self.cart[show_id]['quantity'] -= quantity
-            self.save()
+            self.save()  
+            
+        
 
-    def get_items(self):
-        """
-        Renvoie les articles du panier.
-        """
-        return self.cart.values()
+
+
+
+
+
+
+
+# class Cart:
+#     def __init__(self, request):
+#         """
+#         Initialise un nouveau panier.
+        
+#         :param request: L'objet requête Django.
+#         """
+#         self.session = request.session
+#         cart = self.session.get('cart')
+#         if not cart:
+#             cart = self.session['cart'] = {}
+#         self.cart = cart
+
+#     def add(self, show, quantity):
+#         """
+#         Ajoute un spectacle au panier ou met à jour la quantité si le spectacle est déjà présent.
+        
+#         :param show: L'objet Show à ajouter au panier.
+#         :param quantity: La quantité du spectacle à ajouter.
+#         """
+#         show_id = str(show.id)
+#         if show_id not in self.cart:
+#             self.cart[show_id] = {'quantity': quantity, 'title': show.title, 'price': float(show.price)}
+#         else:
+#             self.cart[show_id]['quantity'] += quantity
+#         self.save()
+
+#     def save(self):
+#         """
+#         Enregistre le panier en marquant la session comme modifiée.
+#         """
+#         self.session.modified = True
+
+#     def __iter__(self):
+#         """
+#         Itère sur les éléments du panier.
+#         """
+#         show_ids = self.cart.keys()
+#         shows = Show.objects.filter(id__in=show_ids)
+#         for show in shows:
+#             show_id = str(show.id)
+#             self.cart[show_id]['title'] = show.title
+#             self.cart[show_id]['price'] = show.price
+
+#         for item in self.cart.values():
+#             item['total_price'] = item['quantity'] * item['price']
+#             yield item
+
+#     def __len__(self):
+#         """
+#         Renvoie le nombre total d'articles dans le panier.
+#         """
+#         return sum(item['quantity'] for item in self.cart.values())
+
+#     def get_total_price(self):
+#         """
+#         Renvoie le prix total du panier.
+#         """
+#         return sum(item['quantity'] * item['price'] for item in self.cart.values())
+
+#     def clear(self):
+#         """
+#         Supprime tous les éléments du panier.
+#         """
+#         del self.session['cart']
+#         self.save()
+
+#     def remove(self, show, quantity):
+#         """
+#         Supprime une quantité donnée du spectacle du panier.
+
+#         :param show: L'objet Show à supprimer du panier.
+#         :param quantity: La quantité du spectacle à supprimer.
+#         """
+#         show_id = str(show.id)
+#         if show_id in self.cart:
+#             if quantity >= self.cart[show_id]['quantity']:
+#                 del self.cart[show_id]
+#             else:
+#                 self.cart[show_id]['quantity'] -= quantity
+#             self.save()
+            
+            
+#     def get_items(self):
+#         """
+#         Renvoie les articles du panier.
+#         """
+#         return self.cart.values()
+
+
+
+    

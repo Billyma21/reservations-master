@@ -48,7 +48,10 @@ urlpatterns = [
     #Bilal ma -  pour passage au paiement
     path('payment/', views.make_payment, name='make_payment'),
     path('payment/success/', views.payment_success, name='payment_success'),
-    # path('payment/checkout_summary/', views.checkout_summary, name='checkout_summary'),
+    path('payment/checkout_summary/', views.checkout_summary, name='checkout_summary'),
+    path('order_history/', views.order_history, name='order_history'),
+    path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
+
    
     #Edward A - chemin du feed rss
     #path('feed/', LatestEntriesFeed(), name='rssfeed'),
