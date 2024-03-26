@@ -52,7 +52,9 @@ urlpatterns = [
    
     #Edward A - chemin du feed rss
     #path('feed/', LatestEntriesFeed(), name='rssfeed'),
+    #Edward A - Chemin provisoire pour test pdf
     path('artist_pdf/', views.artist_pdf, name='artist_pdf'),
+    path('api_auth/', include('rest_framework.urls')),
 
 ]
 

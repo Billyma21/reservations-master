@@ -18,7 +18,7 @@ class LatestEntriesFeed(Feed):
     def item_description(self, item):
         return item.description
     
-    #problème, aucune idée pourquoi.
+    #besoin que le frontend soit pret pour inserer le lien.
     def item_link(self, item):
         return reverse("news-item", args=[item.pk])
 """

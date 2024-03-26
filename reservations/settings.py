@@ -49,6 +49,8 @@ INSTALLED_APPS = [
 
     #EA - django import export
     'import_export',
+    #EA - API
+    'rest_framework',
 
 ]
 
@@ -130,17 +132,17 @@ DATABASES = {
 # # Database local ---> phpmyadmin
 # # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'reservations',
-#         'USER': 'ROOT',
-#         'PASSWORD': '',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#         'SOCKET': '/Applications/MAMP/tmp/mysql/mysql.sock',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'reservations',
+         'USER': 'root',
+         'PASSWORD': '',
+         'HOST': '127.0.0.1',
+         'PORT': '3306',
+         'SOCKET': '/Applications/MAMP/tmp/mysql/mysql.sock',
+     }
+ }
 
 
 # Password validation
@@ -189,3 +191,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

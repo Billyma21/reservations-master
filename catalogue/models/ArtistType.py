@@ -2,8 +2,6 @@ from django.db import models
 from .artist import *
 from .type import *
 
-
-
 class ArtistType(models.Model):
     # Clé primaire
     id = models.BigAutoField(primary_key=True, verbose_name="ID_artiste-type")
@@ -12,5 +10,5 @@ class ArtistType(models.Model):
     # Clé étrangère vers Type
     type = models.ForeignKey(Type, on_delete=models.CASCADE, verbose_name="Fonction_artiste")
 
-
-        
+    class Meta:
+        db_table = "artiste_type"
