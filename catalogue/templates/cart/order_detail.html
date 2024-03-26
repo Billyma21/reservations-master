@@ -1,0 +1,11 @@
+<h1>Détails de la commande #{{ order.id }}</h1>
+<h3>Date de commande: {{ order.order_date }}</h3>
+<h3>Total: {{ order.total_amount }} €</h3>
+<h3>Méthode de paiement: {{ order.payment_method }}</h3>
+
+<h2>Articles commandés :</h2>
+<ul>
+    {% for item in order.items %}
+    <li>{{ item.title }} - Quantité: {{ item.quantity }} - Prix unitaire: {{ item.price }} € - Prix total: {{ item.total_price }} €</li>
+    {% endfor %}
+</ul>

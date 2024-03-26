@@ -1,0 +1,10 @@
+<h1>Historique de vos commandes</h1>
+<ul>
+    {% for order in orders %}
+    <li>
+        <a href="{% url 'catalogue:order_detail' order.id %}">Commande #{{ order.id }}</a>
+        - Date: {{ order.order_date }}
+        - Total: {{ order.total_amount }} €
+    </li>
+    {% endfor %}
+</ul>
