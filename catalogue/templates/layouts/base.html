@@ -58,6 +58,18 @@
                     <a class="nav-link"  href="{% url 'accounts:register' %}">Inscription</a></p>
                           {% endif %}
                 </li>
+
+
+            
+                     <li class="nav-item">
+                        <a href="{% url 'accounts:change_password' %}" class="btn btn-primary">Changer le mot de passe</a>
+                    </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:change_username' %}">Changer de pseudo</a>                    
+                    </li>
+
+                    
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
                 </li>

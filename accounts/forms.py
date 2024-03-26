@@ -21,3 +21,13 @@ class UserRegistrationForm(UserCreationForm):
 
 class CustomPasswordResetForm(PasswordResetForm):
     pass 
+
+
+class ChangeUsernameForm(forms.Form):
+    new_username = forms.CharField(label='Nouveau pseudo', max_length=150)
+
+    def clean_new_username(self):
+        new_username = self.cleaned_data['new_username']
+        if User.objects.filter(username=new_username).exists():
+            raise forms.ValidationError("Ce pseudo est déjà pris. Veuillez en choisir un autre.")
+        return new_username

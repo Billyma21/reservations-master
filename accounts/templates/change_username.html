@@ -1,0 +1,41 @@
+<!--Bilal Ma - Utilisateur puisse changer le pseudo, lorsqu'on est co  -->
+
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">Changer le pseudo</h2>
+                        <!-- Affichage du pseudo actuel -->
+                        <div class="form-group">
+                            <label for="current_username">Pseudo actuel :</label>
+                            <input type="text" class="form-control" id="current_username" value="{{ request.user.username }}" disabled>
+                        </div>
+                        <!-- Formulaire de changement de pseudo -->
+                        <form id="changeUsernameForm" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_new_username">Nouveau pseudo</label>
+                                <input type="text" class="form-control" id="id_new_username" name="new_username" placeholder="Entrez votre nouveau pseudo" required>
+                                <div class="invalid-feedback" id="usernameValidationFeedback">
+                                    Veuillez fournir un pseudo valide.
+                                </div>
+                                <div id="suggestions"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_password">Mot de passe actuel</label>
+                                <input type="password" class="form-control" id="id_password" name="password" placeholder="Entrez votre mot de passe actuel" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Changer le pseudo</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- CSS Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    </div>
+{% endblock %}
