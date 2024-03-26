@@ -9,7 +9,6 @@ from .show import *
 from .ArtistType import *
 from .collaboration import *
 from .Cart import *
-from .Payment import *
 from .Order import *
 
 

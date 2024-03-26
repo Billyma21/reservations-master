@@ -1,140 +1,113 @@
-{% comment %} <!-- Bilal Ma - /payment_information.htmlcart -->
 
+<!-- Bilal Ma - /payment_information.html -->
 
-<h1>Récapitulatif de la commande</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Spectacle</th>
-            <th scope="col">Quantité</th>
-            <th scope="col">Prix unitaire</th>
-            <th scope="col">Prix total</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in cart_items %}
-        <tr>
-            <td>{{ item.title }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.price }} €</td>
-            <td>{{ item.total_price }} €</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3">Total</td>
-            <td>{{ total_price }} €</td>
-        </tr>
-    </tfoot>
-</table>
-
-    
-
-<h1>Informations de paiement</h1>
-{% url 'catalogue:checkout_summary' %}
-<form method="post" action="{% url 'catalogue:make_payment' %}">
-    {% csrf_token %}
-    <h2>Choisissez votre méthode de paiement :</h2>
-    <input type="radio" id="visa" name="payment_method" value="Visa">
-    <label for="visa">Carte Visa</label><br>
-    <input type="radio" id="maestro" name="payment_method" value="Maestro">
-    <label for="maestro">Carte Maestro</label><br>
-    <input type="radio" id="paypal" name="payment_method" value="Paypal">
-    <label for="paypal">Paypal</label><br>
-    <input type="radio" id="sur_place" name="payment_method" value="Sur place">
-    <label for="sur_place">Paiement sur place</label><br>
-
-    <div id="payment_form_visa" style="display: none;">
-        <!-- Formulaire de paiement Visa -->
-        <!-- Champs pour les informations de la carte Visa -->
-        <input type="text" name="card_number" placeholder="Numéro de carte"><br>
-        <input type="text" name="expiry_date" placeholder="Date d'expiration"><br>
-        <input type="text" name="cvv" placeholder="CVV"><br>
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-5">
+        <div class="col">
+            <h1>Récapitulatif de la commande</h1>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Spectacle</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Prix unitaire</th>
+                        <th scope="col">Prix total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.price }} €</td>
+                        <td>{{ item.total_price }}</td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Total</strong></td>
+                        <td><strong>{{ total_price }} €</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 
-    <div id="payment_form_paypal" style="display: none;">
-        <!-- Formulaire de paiement Paypal -->
-        <!-- Champs pour les informations de compte Paypal -->
-        <input type="email" name="paypal_email" placeholder="Adresse email Paypal"><br>
-        <input type="password" name="paypal_password" placeholder="Mot de passe Paypal"><br>
+    <div class="row">
+        <div class="col">
+            <h1>Informations de paiement</h1>
+            <form method="post" action="{% url 'catalogue:make_payment' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h2>Choisissez votre méthode de paiement :</h2>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="visa" name="payment_method" value="Visa">
+                        <label class="form-check-label" for="visa">Carte Visa</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="maestro" name="payment_method" value="Maestro">
+                        <label class="form-check-label" for="maestro">Carte Maestro</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="paypal" name="payment_method" value="Paypal">
+                        <label class="form-check-label" for="paypal">Paypal</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="sur_place" name="payment_method" value="Sur place">
+                        <label class="form-check-label" for="sur_place">Paiement sur place</label>
+                    </div>
+                </div>
+
+                <!-- Formulaires de paiement spécifiques -->
+                <div id="payment_form_visa" style="display: none;">
+                    <!-- Formulaire de paiement Visa -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="card_number" placeholder="Numéro de carte">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="expiry_date" placeholder="Date d'expiration">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="cvv" placeholder="CVV">
+                    </div>
+                </div>
+
+                <div id="payment_form_paypal" style="display: none;">
+                    <!-- Formulaire de paiement Paypal -->
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="paypal_email" placeholder="Adresse email Paypal">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="paypal_password" placeholder="Mot de passe Paypal">
+                    </div>
+                </div>
+
+                <div id="payment_form_sur_place" style="display: none;">
+                    <!-- Formulaire pour le paiement sur place -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="comment" placeholder="(facultatif)">
+                    </div>
+                </div>
+
+                <!-- Bouton de soumission -->
+                <button type="submit" class="btn btn-primary">Payer</button>
+            </form>
+        </div>
     </div>
+</div>
 
-    <div id="payment_form_sur_place" style="display: none;">
-        <!-- Formulaire pour le paiement sur place -->
-        <input type="text" name="comment" placeholder="(facultatif)"><br>
-    </div>
 
-    <button type="submit" class="btn btn-primary">Payer</button>
-</form>
+<!-- CSS Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
+
+<!-- JavaScript Bootstrap (optionnel si vous utilisez des fonctionnalités JavaScript de Bootstrap) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script pour afficher les formulaires de paiement correspondants -->
 <script>
-    // Afficher le formulaire de paiement correspondant à la méthode choisie
-    document.querySelectorAll('input[type=radio][name=payment_method]').forEach(function(input) {
-        input.addEventListener('change', function() {
-            var method = this.value;
-            document.querySelectorAll('[id^=payment_form_]').forEach(function(form) {
-                if (form.id === 'payment_form_' + method.toLowerCase().replace(' ', '_')) {
-                    form.style.display = 'block';
-                } else {
-                    form.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>  {% endcomment %}
-
-
-
-<h1>Informations de paiement</h1>
-<form method="post" action="{% url 'catalogue:checkout_summary' %}">
-    {% csrf_token %}
-    <h2>Choisissez votre méthode de paiement :</h2>
-    <input type="radio" id="visa" name="payment_method" value="Visa">
-    <label for="visa">Carte Visa</label><br>
-    <input type="radio" id="maestro" name="payment_method" value="Maestro">
-    <label for="maestro">Carte Maestro</label><br>
-    <input type="radio" id="paypal" name="payment_method" value="Paypal">
-    <label for="paypal">Paypal</label><br>
-    <input type="radio" id="sur_place" name="payment_method" value="Sur place">
-    <label for="sur_place">Paiement sur place</label><br>
-
-    <div id="payment_form_visa" style="display: none;">
-        <!-- Formulaire de paiement Visa -->
-        <!-- Champs pour les informations de la carte Visa -->
-        <input type="text" name="card_number" placeholder="Numéro de carte"><br>
-        <input type="text" name="expiry_date" placeholder="Date d'expiration"><br>
-        <input type="text" name="cvv" placeholder="CVV"><br>
-    </div>
-
-    <div id="payment_form_paypal" style="display: none;">
-        <!-- Formulaire de paiement Paypal -->
-        <!-- Champs pour les informations de compte Paypal -->
-        <input type="email" name="paypal_email" placeholder="Adresse email Paypal"><br>
-        <input type="password" name="paypal_password" placeholder="Mot de passe Paypal"><br>
-    </div>
-
-    <div id="payment_form_sur_place" style="display: none;">
-        <!-- Formulaire pour le paiement sur place -->
-        <input type="text" name="comment" placeholder="(facultatif)"><br>
-    </div>
-
-
-
-    
-    <tfoot>
-        <tr>
-            <td colspan="3">Total</td>
-            <td>{{ total_price }} €</td>
-        </tr>
-    </tfoot>
-
-
-    <button type="submit" class="btn btn-primary">Payer</button>
-</form>
-
-<script>
-    // Afficher le formulaire de paiement correspondant à la méthode choisie
     document.querySelectorAll('input[type=radio][name=payment_method]').forEach(function(input) {
         input.addEventListener('change', function() {
             var method = this.value;
@@ -148,3 +121,6 @@
         });
     });
 </script>
+
+
+{% endblock %}
