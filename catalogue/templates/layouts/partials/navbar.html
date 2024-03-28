@@ -1,4 +1,6 @@
-<nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
+<!------------------- Billy : NavBar - Version 1.1 ----------------------->
+
+{% comment %} <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
         <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"
             ><i class="fas fa-home"></i> Catalogue</a
@@ -88,4 +90,78 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> {% endcomment %}
+
+
+<!------------------- Billy&Etienne : NavBar - Version 1.2 ----------------------->
+
+{% block head %}
+    <!-- Insérez ici les balises meta et les liens CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'catalogue:home_index' %}">
+                <i class="fas fa-home"></i> Catalogue
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'catalogue:home_index' %}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
+                    </li>
+                    <!------------------- Admin - Etienne ----------------------->
+
+                    {% if user.is_authenticated and user.is_staff %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}">Administration</a>
+                    </li>
+                    {% endif %}
+                    <!------------------- Fin-Admin - Etienne ----------------------->
+
+                <!------------------- Auth - Bilal Ma ----------------------->
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Connecté sous {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'accounts:change_username' %}">Changer de pseudo</a>
+                            <a class="dropdown-item" href="{% url 'accounts:change_password' %}">Changer le mot de passe</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'accounts:logout' %}">Déconnexion</a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:register' %}">Inscription</a>
+                    </li>
+                    {% endif %}
+                    <!-------------------FIN - Auth - Bilal Maayoud ----------------------->
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block scripts %}
+    <!-- Insérez ici les scripts JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+
