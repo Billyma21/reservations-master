@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from catalogue.views import index as home_index  
 from django.urls import path, include
-# from django.contrib import admin
+from django.contrib import admin
 # from django.urls import path, include
 from . import views
 from .views import *
