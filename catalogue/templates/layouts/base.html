@@ -1,120 +1,149 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock title %}</title>
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/10b9094114.js"></script>
-    <style>
-       
-        body {
-            padding-bottom: 100px; 
-        }
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #343a40;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        @media (max-width: 768px) {
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock title %}</title>
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/10b9094114.js"></script>
+        <style>
             body {
-                padding-bottom: 200px; 
+                padding-bottom: 100px;
             }
-        }
-    </style>
-</head>
-<body>
-<!------------------- Navbar - Bilal Maayoud ----------------------->
-<nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"><i class="fas fa-home"></i> Catalogue</a>
-        <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto">
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background-color: #343a40;
+                color: #ffffff;
+                padding: 10px 0;
+                text-align: center;
+            }
+            @media (max-width: 768px) {
+                body {
+                    padding-bottom: 200px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!------------------- Navbar - Bilal Maayoud ----------------------->
+        <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"
+                    ><i class="fas fa-home"></i> Catalogue</a
+                >
+                <button
+                    class="navbar-toggler"
+                    data-target="#collapsibleNavbar"
+                    data-toggle="collapse"
+                    type="button"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="{% url 'catalogue:home_index' %}"
+                                >Accueil</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="{% url 'catalogue:show_index' %}"
+                                >Liste des spectacles</a
+                            >
+                        </li>
 
-<!------------------- Auth - Bilal Maayoud ----------------------->
 
-        {% comment %} {% if user.is_authenticated %}
-            <p>Connecté sous {{ user.username }} | <a href="{% url 'accounts:logout' %}">Déconnexion</a></p>
-            {% else %}
-                <p><a href="{% url 'accounts:login' %}">Connexion</a> | 
-                <a href="{% url 'accounts:register' %}">Inscription</a></p>
-        {% endif %} {% endcomment %}
+                        <!-- Afficher l'onglet pour les administrateurs uniquement -->
+                        {% if user.is_authenticated and user.is_staff %}
+                        <li class="nav-item">
+                            <a class="nav-link"
+                            href="{% url 'admin:index' %}"
+                            >Administration
+                        </a>
+                        </li>
+                        {% endif %}
 
-<!-------------------FIN - Auth - Bilal Maayoud ----------------------->
+                        <!-------------------BM - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
 
-                <li>
-                    {% if user.is_authenticated %}
-                    <p>Connecté sous {{ user.username }} | <a href="{% url 'accounts:logout' %}">Déconnexion</a></p>
-                         {% else %}
-                    <p><a href="{% url 'accounts:login' %}">Connexion</a>  
-                    <a class="nav-link"  href="{% url 'accounts:register' %}">Inscription</a></p>
-                          {% endif %}
-                </li>
-        <!-------------------BM - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a
+                                href="{% url 'accounts:change_username' %}"
+                                class="nav-link"
+                                >Changer de pseudo</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                href="{% url 'accounts:change_password' %}"
+                                class="nav-link"
+                                >Changer le mot de passe</a
+                            >
+                        </li>
 
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a href="{% url 'accounts:change_password' %}" class="nav-link">Changer le mot de passe</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'accounts:change_username' %}" class="nav-link">Changer de pseudo</a>                    
-                </li>
-            {% endif %}
-        <!-------------------Fin - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
+                        {% endif %}
+                        <!-------------------Fin - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
+                        <!------------------- Auth - Bilal Maayoud ----------------------->
+                        <li>
+                            {% if user.is_authenticated %}
+                            <p>
+                                Connecté sous {{ user.username }} |
+                                <a href="{% url 'accounts:logout' %}"
+                                    >Déconnexion</a
+                                >
+                            </p>
+                            {% else %}
+                            <p>
+                                <a href="{% url 'accounts:login' %}"
+                                    >Connexion</a
+                                >
+                                <a
+                                    class="nav-link"
+                                    href="{% url 'accounts:register' %}"
+                                    >Inscription</a
+                                >
+                            </p>
+                            {% endif %}
+                        </li>
+                        <!-------------------FIN - Auth - Bilal Maayoud ----------------------->
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:artist_index' %}">Liste des artistes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:location_index' %}">Emplacements</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:locality_index' %}">Localités</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:role_index' %}">Rôles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:type_index' %}">Liste des types</a>
-                </li>
-            </ul> 
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-------------------FIN - Navbar - Bilal Maayoud ----------------------->
+
+        <!-- Main Content -->
+
+        <div class="container">
+            {% block content %}
+
+            <!--  Content -->
+            <!--  Content -->
+            <!--  Content -->
+
+            {% endblock %}
         </div>
-    </div>
-</nav>
-<!-------------------FIN - Navbar - Bilal Maayoud ----------------------->
 
-<!-- Main Content -->
+        <!----------------- Footer - Bilal Maayoud ----------------->
+        {% include 'layouts/partials/footer.html' %}
 
-<div class="container">
+        <!-----------------Fin - Footer - Bilal Maayoud ----------------->
 
-    {% block content %}
-
-    <!--  Content -->
-    <!--  Content -->
-    <!--  Content -->
-    
-    {% endblock %}
-
-</div>
-
-<!----------------- Footer - Bilal Maayoud ----------------->
-{% include 'layouts/partials/footer.html' %}
-
-<!-----------------Fin - Footer - Bilal Maayoud ----------------->
-
-<!-- Bootstrap core JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </body>
 </html>
