@@ -7,6 +7,7 @@ from .models.representation import Representation
 from .models.user import User
 from .models.roleUser import RoleUser
 from .models.representationUser import RepresentationUser
+from .models.artistTypeShow import ArtistTypeShow
 
 
 
@@ -20,6 +21,10 @@ class ArtistAdmin(admin.ModelAdmin):
 
 admin.site.register(ArtistType, ImportExportModelAdmin)
 class ArtistTypeAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(ArtistTypeShow, ImportExportModelAdmin)
+class ArtistTypeShowAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Show, ImportExportModelAdmin)

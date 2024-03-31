@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     #BM - Filtre
     # 'django_filters',
     #BM - Bootstrap5
-    # 'bootstrap5',
+    'bootstrap5',
 
     #EA - django import export
     'import_export',

@@ -19,3 +19,6 @@ class Show(models.Model):
     
     class Meta:
         db_table = "shows"
+
+    def __str__(self):
+        return self.slug

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     <meta charset="utf-8">
     <title>{% block title %}{% endblock title %}</title>
     <!-- Bootstrap core CSS -->
@@ -32,7 +35,7 @@
 <!------------------- Navbar - Bilal Maayoud ----------------------->
 <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"><i class="fas fa-home"></i> Catalogue</a>
+        <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"><i class="fas fa-home"></i> Projet Reservation</a>
         <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -71,7 +74,7 @@
         <!-------------------Fin - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
+                    <a class="nav-link" href="{% url 'catalogue:show_index' %}">Reservation</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'catalogue:artist_index' %}">Liste des artistes</a>

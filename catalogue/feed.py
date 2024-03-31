@@ -20,5 +20,5 @@ class LatestEntriesFeed(Feed):
     
     #besoin que le frontend soit pret pour inserer le lien.
     def item_link(self, item):
-        return reverse("news-item", args=[item.pk])
+        return reverse("show/", args=[item.pk])
 """

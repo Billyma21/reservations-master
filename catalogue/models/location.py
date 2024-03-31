@@ -15,3 +15,6 @@ class Location(models.Model):
     
     class Meta:
         db_table = "locations"
+    
+    def __str__(self):
+        return self.slug

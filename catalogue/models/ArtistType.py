@@ -10,5 +10,8 @@ class ArtistType(models.Model):
     # Clé étrangère vers Type
     type = models.ForeignKey(Type, on_delete=models.CASCADE, verbose_name="Fonction_artiste")
 
+    def __str__(self):
+        return self.artist.firstname +" "+ self.artist.lastname
+
     class Meta:
         db_table = "artiste_type"
