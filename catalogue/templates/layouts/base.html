@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+<<<<<<< HEAD
 <head>
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -25,9 +26,23 @@
             text-align: center;
         }
         @media (max-width: 768px) {
+=======
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock title %}</title>
+        <!-- Bootstrap core CSS -->
+        <link
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/10b9094114.js"></script>
+        <style>
+>>>>>>> main
             body {
-                padding-bottom: 200px; 
+                padding-bottom: 100px;
             }
+<<<<<<< HEAD
         }
     </style>
 </head>
@@ -41,28 +56,40 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
+=======
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                background-color: #343a40;
+                color: #ffffff;
+                padding: 10px 0;
+                text-align: center;
+            }
+            @media (max-width: 768px) {
+                body {
+                    padding-bottom: 200px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!------------------- Navbar - Bilal Ma ----------------------->
+        {% include 'layouts/partials/navbar.html' %}
+>>>>>>> main
 
-<!------------------- Auth - Bilal Maayoud ----------------------->
+        <!-------------------FIN - Navbar - Bilal Ma ----------------------->
 
-        {% comment %} {% if user.is_authenticated %}
-            <p>Connecté sous {{ user.username }} | <a href="{% url 'accounts:logout' %}">Déconnexion</a></p>
-            {% else %}
-                <p><a href="{% url 'accounts:login' %}">Connexion</a> | 
-                <a href="{% url 'accounts:register' %}">Inscription</a></p>
-        {% endif %} {% endcomment %}
+        <!-- Main Content -->
 
-<!-------------------FIN - Auth - Bilal Maayoud ----------------------->
+        <div class="container">
+            {% block content %}
 
-                <li>
-                    {% if user.is_authenticated %}
-                    <p>Connecté sous {{ user.username }} | <a href="{% url 'accounts:logout' %}">Déconnexion</a></p>
-                         {% else %}
-                    <p><a href="{% url 'accounts:login' %}">Connexion</a>  
-                    <a class="nav-link"  href="{% url 'accounts:register' %}">Inscription</a></p>
-                          {% endif %}
-                </li>
-        <!-------------------BM - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
+            <!--  Content -->
+            <!--  Content -->
+            <!--  Content -->
 
+<<<<<<< HEAD
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{% url 'accounts:change_password' %}" class="nav-link">Changer le mot de passe</a>
@@ -92,32 +119,38 @@
                     <a class="nav-link" href="{% url 'catalogue:type_index' %}">Liste des types</a>
                 </li>
             </ul> 
+=======
+            {% endblock %}
+>>>>>>> main
         </div>
-    </div>
-</nav>
-<!-------------------FIN - Navbar - Bilal Maayoud ----------------------->
 
-<!-- Main Content -->
+        <!----------------- Footer - Bilal Ma ----------------->
+        {% include 'layouts/partials/footer.html' %}
 
-<div class="container">
+        <!-----------------Fin - Footer - Bilal Ma ----------------->
+        
+<!-- CSS Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    {% block content %}
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!--  Content -->
-    <!--  Content -->
-    <!--  Content -->
-    
-    {% endblock %}
+<!-- Include DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
-</div>
+<!-- Include DataTables JS -->
+<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-<!----------------- Footer - Bilal Maayoud ----------------->
-{% include 'layouts/partials/footer.html' %}
+<!-- Initialize DataTable -->
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+</script>
 
-<!-----------------Fin - Footer - Bilal Maayoud ----------------->
+        
 
-<!-- Bootstrap core JavaScript -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</body>
+    </body>
 </html>
+
+
