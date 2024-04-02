@@ -133,6 +133,16 @@
                     {% endif %}
                     <!------------------- Fin-Admin - Etienne ----------------------->
 
+
+                    <!------------------- Search Bar - Edward ----------------------->
+
+                    <form class="d-flex" role="search">
+                        {% csrf_token %}
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </form>
+                    <!------------------- Fin- Search Bar - Edward ----------------------->
+
                 <!------------------- Auth - Bilal Ma ----------------------->
 
                     {% if user.is_authenticated %}

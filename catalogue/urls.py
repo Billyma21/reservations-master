@@ -9,7 +9,7 @@ from django.contrib import admin
 # from django.urls import path, include
 from . import views
 from .views import *
-from .views import show 
+from .views import show
 # from django.contrib.auth import views as auth_views
 from .views import payment
 
