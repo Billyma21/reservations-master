@@ -1,12 +1,13 @@
-"""
+#je n'y arrive pas
+'''
 from django.contrib.syndication.views import Feed
 from django.urls import reverse
-from .models import *
+from .models import Show
 
 
 class LatestEntriesFeed(Feed):
-    title = "Latest Shows"
-    link = "/show/"
+    title = "Derniers Spectacles"
+    link = "/lastshow/"
     description = "Check out our new shows."
 
     def items(self):
@@ -20,5 +21,5 @@ class LatestEntriesFeed(Feed):
     
     #besoin que le frontend soit pret pour inserer le lien.
     def item_link(self, item):
-        return reverse("show/", args=[item.pk])
-"""
+        return reverse("show_show", args=[item.pk])
+'''

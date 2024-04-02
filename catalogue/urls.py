@@ -26,32 +26,41 @@ app_name='catalogue'
 urlpatterns = [
     path('', views.home.index, name='home_index'),
     #Bilal - Pour vu sur artist
-    #path('artist/', views.artist.index, name='artist_index'),
-    #path('artist/<int:artist_id>', views.artist.show, name='artist_show'),
+    path('artist/', views.artist.index, name='artist_index'),
+    path('artist/<int:artist_id>', views.artist.show, name='artist_show'),
 
     #EA Version API fonction
     #path('artist/', artist.artist_list.),
     #path('artist/<int:artist_id>', artist.artist_detail),
 
     #EA Version API class
-    path('artist/', artist.ArtistList.as_view()),
-    path('artist/<int:artist_id>', artist.ArtistDetail.as_view()),
+    path('api/artist/', artist.ArtistList.as_view()),
+    path('api/artist/<int:artist_id>', artist.ArtistDetail.as_view()),
 
     #Bilal - Pour vu sur type
-    path('type/', views.type.index, name='type_index'),
-    path('type/<int:type_id>', views.type.show, name='type_show'),
+    #Edward - Pas nécessaire
+    #path('type/', views.type.index, name='type_index'),
+    #path('type/<int:type_id>', views.type.show, name='type_show'),
+
     #Bilal - Pour vu sur locality
-    path('locality/', locality.ListeLocalitesView.as_view(), name='locality_index'),
-    path('locality/<int:pk>/', locality.DetailLocaliteView.as_view(), name='locality_show'),
-    #Bilal - Pour vu sur Role 
-    path('role/', views.role.index, name='role_index'),
-	path('role/<int:role_id>', views.role.show, name='role_show'),
-    #Bilal - Pour vu sur location 
-    path('location/', views.location.index, name='location_index'),
-	path('location/<int:location_id>', views.location.show, name='location_show'),
+    #Edward - Pas nécessaire
+    #path('locality/', locality.ListeLocalitesView.as_view(), name='locality_index'),
+    #path('locality/<int:pk>/', locality.DetailLocaliteView.as_view(), name='locality_show'),
+
+    #Bilal - Pour vu sur Role
+    #Edward - Pas nécessaire 
+    #path('role/', views.role.index, name='role_index'),
+	#path('role/<int:role_id>', views.role.show, name='role_show'),
+
+    #Bilal - Pour vu sur location
+    #Edward - pas nécessaire 
+    #path('location/', views.location.index, name='location_index'),
+	#path('location/<int:location_id>', views.location.show, name='location_show'),
+
     #Bilal - Pour vu sur show 
     # path('show/', views.show.index, name='show_index'),
     # path('show/<int:show_id>', views.show.show, name='show_show'),
+
     path('show/', views.show, name='show_index'),
     path('show/<int:show_id>/', views.show, name='show_show'),
     #Bilal Ma - Authentifaction dans accounts/ 
@@ -66,7 +75,6 @@ urlpatterns = [
     path('order_history/', views.order_history, name='order_history'),
     path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
 
-   
     #Edward A - chemin du feed rss
     #path('feed/', LatestEntriesFeed(), name='rssfeed'),
     #Edward A - Chemin provisoire pour test pdf

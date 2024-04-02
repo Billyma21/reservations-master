@@ -12,21 +12,15 @@ class Artist(models.Model):
     firstname = models.CharField(max_length=60)
     lastname = models.CharField(max_length=60)
 
+    #API Auth & Permissions
+    #owner = models.ForeignKey('auth.User', related_name='artists', on_delete=models.CASCADE)
+    #highlighted = models.TextField()
+
     def __str__(self):
         return self.firstname +" "+ self.lastname
     
+    #def save(self, *args, **kwargs):
+    #    super().save(*args, **kwargs)
+
     class Meta:
         db_table = "artists"
-
-'''
-    #API Auth & Permissions
-    owner = models.ForeignKey('auth.User', related_name='artists', on_delete=models.CASCADE)
-    highlighted = models.TextField()
-
-    def save(self, *args, **kwargs):
-        lexer = get_lexer_by_name(self.language)
-        options = {'firstname'+" "+'lastname': self.firstname +" "+ self.lastname} if self.firstname +" "+ self.lastname else {}
-        formatter = HtmlFormatter(full=True, **options)
-        self.highlighted = highlight(lexer, formatter)
-        super().save(*args, **kwargs)
-'''

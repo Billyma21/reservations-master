@@ -107,7 +107,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{% url 'catalogue:home_index' %}">
-                <i class="fas fa-home"></i> Catalogue
+                <i class="fas fa-home"></i> Projet Intégration
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -118,7 +118,11 @@
                         <a class="nav-link" href="{% url 'catalogue:home_index' %}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'catalogue:show_index' %}">Liste des spectacles</a>
+                        <a class="nav-link" href="{% url 'catalogue:show_index' %}">Spectacles</a>
+                    </li>
+                    <!-- Edward -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'catalogue:artist_index' %}">Artistes</a>
                     </li>
                     <!------------------- Admin - Etienne ----------------------->
 

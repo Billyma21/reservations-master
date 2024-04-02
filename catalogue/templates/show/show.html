@@ -16,6 +16,10 @@
                     {% else %}
                     <p>Aucune image disponible</p>
                     {% endif %}
+                    
+                    {% if show.description %}
+                    <p class="card-text"><strong>Description:</strong> {{ show.description }}</p>
+                    {% endif %}
 
                     {% if show.location %}
                     <p class="card-text"><strong>Lieu de création:</strong> {{ show.location.designation }}</p>

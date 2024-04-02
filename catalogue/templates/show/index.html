@@ -22,7 +22,7 @@
             {% for show in shows %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ show.title }}</td>
+                <td><a href="{% url 'catalogue:show_show' show.id %}">{{ show.title }}</a></td>
                 <td>{{ show.description }}</td>
                 <td>
                     {% if show.price %}
