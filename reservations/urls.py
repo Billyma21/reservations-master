@@ -15,14 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api.views import artist
 
 urlpatterns = [
     path('', include('catalogue.urls')), 
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
 
-
-    #chemin provisoire, a supprimer plus tard
-    path('artist_api_test/', artist.artist_list),
 ]

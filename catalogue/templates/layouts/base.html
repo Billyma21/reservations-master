@@ -1,35 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-<<<<<<< HEAD
-<head>
-    {% load bootstrap5 %}
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
-    <meta charset="utf-8">
-    <title>{% block title %}{% endblock title %}</title>
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/10b9094114.js"></script>
-    <style>
-       
-        body {
-            padding-bottom: 100px; 
-        }
-        footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #343a40;
-            color: #ffffff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        @media (max-width: 768px) {
-=======
     <head>
         <meta charset="utf-8" />
         <title>{% block title %}{% endblock title %}</title>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
         <!-- Bootstrap core CSS -->
         <link
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -38,25 +14,9 @@
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/10b9094114.js"></script>
         <style>
->>>>>>> main
             body {
                 padding-bottom: 100px;
             }
-<<<<<<< HEAD
-        }
-    </style>
-</head>
-<body>
-<!------------------- Navbar - Bilal Maayoud ----------------------->
-<nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'catalogue:home_index' %}"><i class="fas fa-home"></i> Projet Reservation</a>
-        <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav ml-auto">
-=======
             footer {
                 position: fixed;
                 bottom: 0;
@@ -76,7 +36,6 @@
     <body>
         <!------------------- Navbar - Bilal Ma ----------------------->
         {% include 'layouts/partials/navbar.html' %}
->>>>>>> main
 
         <!-------------------FIN - Navbar - Bilal Ma ----------------------->
 
@@ -85,43 +44,7 @@
         <div class="container">
             {% block content %}
 
-            <!--  Content -->
-            <!--  Content -->
-            <!--  Content -->
-
-<<<<<<< HEAD
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a href="{% url 'accounts:change_password' %}" class="nav-link">Changer le mot de passe</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'accounts:change_username' %}" class="nav-link">Changer de pseudo</a>                    
-                </li>
-            {% endif %}
-        <!-------------------Fin - Changer pseudo/mot_passe uniquement si user est connecter  ----------------------->
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:show_index' %}">Reservation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:artist_index' %}">Liste des artistes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:location_index' %}">Emplacements</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:locality_index' %}">Localités</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:role_index' %}">Rôles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'catalogue:type_index' %}">Liste des types</a>
-                </li>
-            </ul> 
-=======
             {% endblock %}
->>>>>>> main
         </div>
 
         <!----------------- Footer - Bilal Ma ----------------->

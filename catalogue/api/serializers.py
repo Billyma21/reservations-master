@@ -63,6 +63,7 @@ class RepresentationUserSerializer(serializers.ModelSerializer):
         fields = ['id', 'representation_id', 'user_id', 'places']
 
 class UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
         fields = ['id', 'login', 'password', 'firstname', 'kastname', 'email', 'langue']

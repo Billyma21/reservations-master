@@ -16,13 +16,27 @@ from .views import payment
 #EA-import pour rss
 #from .feed import LatestEntriesFeed
 
+#EA API
+from rest_framework.urlpatterns import format_suffix_patterns
+from .api.views import artist
+
+
 app_name='catalogue'
 
 urlpatterns = [
     path('', views.home.index, name='home_index'),
     #Bilal - Pour vu sur artist
-    path('artist/', views.artist.index, name='artist_index'),
-    path('artist/<int:artist_id>', views.artist.show, name='artist_show'),
+    #path('artist/', views.artist.index, name='artist_index'),
+    #path('artist/<int:artist_id>', views.artist.show, name='artist_show'),
+
+    #EA Version API fonction
+    #path('artist/', artist.artist_list.),
+    #path('artist/<int:artist_id>', artist.artist_detail),
+
+    #EA Version API class
+    path('artist/', artist.ArtistList.as_view()),
+    path('artist/<int:artist_id>', artist.ArtistDetail.as_view()),
+
     #Bilal - Pour vu sur type
     path('type/', views.type.index, name='type_index'),
     path('type/<int:type_id>', views.type.show, name='type_show'),
@@ -56,10 +70,10 @@ urlpatterns = [
     #Edward A - chemin du feed rss
     #path('feed/', LatestEntriesFeed(), name='rssfeed'),
     #Edward A - Chemin provisoire pour test pdf
-    path('artist_pdf/', views.artist_pdf, name='artist_pdf'),
-    path('api_auth/', include('rest_framework.urls')),
-
+    #path('artist_pdf/', views.artist_pdf, name='artist_pdf'),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
 
 
 if settings.DEBUG:
