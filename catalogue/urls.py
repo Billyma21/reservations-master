@@ -16,6 +16,10 @@ from .views import payment
 #EA-import pour rss
 #from .feed import LatestEntriesFeed
 
+#EA PDF
+from .utilPDF.artistPDF import artist_pdf
+from .utilPDF.showPDF import show_pdf
+
 #EA API
 from rest_framework.urlpatterns import format_suffix_patterns
 from .api.views import artist
@@ -28,6 +32,11 @@ urlpatterns = [
     #Bilal - Pour vu sur artist
     path('artist/', views.artist.index, name='artist_index'),
     path('artist/<int:artist_id>', views.artist.show, name='artist_show'),
+
+    #path('artist/create/'),
+    #path('artist/edit/<int:artist_id>'),
+    #path('show/create/'),
+    #path('show/edit/<int:show_id>'),
 
     #EA Version API fonction
     #path('artist/', artist.artist_list.),
@@ -78,7 +87,8 @@ urlpatterns = [
     #Edward A - chemin du feed rss
     #path('feed/', LatestEntriesFeed(), name='rssfeed'),
     #Edward A - Chemin provisoire pour test pdf
-    #path('artist_pdf/', views.artist_pdf, name='artist_pdf'),
+    path('artist/artist_pdf/', artist_pdf, name='artist_pdf'),
+    path('show/show_pdf/', show_pdf, name='show_pdf'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
