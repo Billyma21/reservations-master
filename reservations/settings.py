@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-it46+&c(8h%3882909p=2p+enl3ml&t8px3#!6d=(^9q)8*r-8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -113,7 +113,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reservations.wsgi.application'
 
-
+ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app", ".now.sh"]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -125,13 +125,15 @@ WSGI_APPLICATION = 'reservations.wsgi.application'
 #     }
 # }
 
-# Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'reservations',
+        'USER': 'eti',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
 
 
