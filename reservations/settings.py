@@ -113,7 +113,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reservations.wsgi.application'
 
-ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app", ".now.sh"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "icc-pid.onrender.com"]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
