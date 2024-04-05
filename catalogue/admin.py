@@ -12,53 +12,57 @@ from .models.artistTypeShow import ArtistTypeShow
 
 
 #Edward Abrahamian - for import/export CSV
+#Ed A. - pour les classes modelAdmin, important faire les déclarations dans cette ordre ==> (ImportExportModelAdmin, model) afin d'eviter l'erreur MRO
 from import_export.admin import ImportExportModelAdmin
 
+#Probleme avec search_fields concernant les fk des modèles
+@admin.register(ArtistTypeShow)
+class ArtistTypeShowAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["artist_type", "show"]
+    #search_fields = ["artist_type"]
+    
+@admin.register(ArtistType)
+class ArtistTypeAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["artist", "type"]
 
-admin.site.register(Artist, ImportExportModelAdmin)
-class ArtistAdmin(admin.ModelAdmin):
+@admin.register(Artist)
+class ArtistAdmin(ImportExportModelAdmin, admin.ModelAdmin,):
+    list_display = ["id" , "firstname", "lastname"]
+    ordering = ["id"]
+
+@admin.register(Locality)
+class LocalityAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["nom" , "code_postal"]
+
+@admin.register(Location)
+class LocationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["designation", "locality", "address"]
+
+@admin.register(RepresentationUser)
+class RepresentationUserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["representation", "user", "places"]
+
+@admin.register(Representation)
+class RepresentationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["show", "when", "location"]
+
+@admin.register(RoleUser)
+class RoleUserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["user", "role"]
+
+@admin.register(Role)
+class RoleAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     pass
 
-admin.site.register(ArtistType, ImportExportModelAdmin)
-class ArtistTypeAdmin(admin.ModelAdmin):
-    pass
+@admin.register(Show)
+class ShowAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["title", "location", "bookable", "price"]
 
-admin.site.register(ArtistTypeShow, ImportExportModelAdmin)
-class ArtistTypeShowAdmin(admin.ModelAdmin):
-    pass
+@admin.register(Type)
+class TypeAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    search_fields = ["type"]
 
-admin.site.register(Show, ImportExportModelAdmin)
-class ShowAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Type, ImportExportModelAdmin)
-class TypeAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Role, ImportExportModelAdmin)
-class RoleAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Location, ImportExportModelAdmin)
-class LocationAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Locality, ImportExportModelAdmin)
-class LocalityAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(Representation, ImportExportModelAdmin)
-class RepresentationAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(RepresentationUser, ImportExportModelAdmin)
-class RepresentationUserAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(User, ImportExportModelAdmin)
-class UserAdmin(admin.ModelAdmin):
-    pass
-
-admin.site.register(RoleUser, ImportExportModelAdmin)
-class RoleUserAdmin(admin.ModelAdmin):
-    pass
+@admin.register(User)
+class UserAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ["email", "login", "langue"]
+    search_fields = ["email", "login"]

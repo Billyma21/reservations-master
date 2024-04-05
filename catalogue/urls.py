@@ -14,7 +14,7 @@ from .views import show
 from .views import payment
 
 #EA-import pour rss
-#from .feed import LatestEntriesFeed
+from .feed import LatestEntriesFeed
 
 #EA PDF
 from .utilPDF.artistPDF import artist_pdf
@@ -85,7 +85,7 @@ urlpatterns = [
     path('order_detail/<int:order_id>/', views.order_detail, name='order_detail'),
 
     #Edward A - chemin du feed rss
-    #path('feed/', LatestEntriesFeed(), name='rssfeed'),
+    path('feed/', LatestEntriesFeed(), name='rssfeed'),
     #Edward A - Chemin provisoire pour test pdf
     path('artist/artist_pdf/', artist_pdf, name='artist_pdf'),
     path('show/show_pdf/', show_pdf, name='show_pdf'),
