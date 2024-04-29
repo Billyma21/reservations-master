@@ -12,7 +12,7 @@ from .models.artistTypeShow import ArtistTypeShow
 
 
 #Edward Abrahamian - for import/export CSV
-#Ed A. - pour les classes modelAdmin, important faire les déclarations dans cette ordre ==> (ImportExportModelAdmin, model) afin d'eviter l'erreur MRO
+#Ed A. - pour les classes modelAdmin, important faire les déclarations dans cet ordre ==> (ImportExportModelAdmin, model) afin d'eviter l'erreur MRO
 from import_export.admin import ImportExportModelAdmin
 
 #Probleme avec search_fields concernant les fk des modèles

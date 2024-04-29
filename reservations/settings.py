@@ -131,7 +131,7 @@ DATABASES = {
 
 # # Database local ---> phpmyadmin
 # # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+"""
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
@@ -143,7 +143,7 @@ DATABASES = {
          'SOCKET': '/Applications/MAMP/tmp/mysql/mysql.sock',
      }
  }
-
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

@@ -1,0 +1,21 @@
+[
+    {
+      "model": "catalogue.representation",
+      "pk": 1,
+      "fields": {
+        "show":1,
+        "when":"2024-04-21T20:00:00.000Z",
+        "location":1
+      }
+    },
+
+    {
+      "model": "catalogue.representation",
+      "pk": 2,
+      "fields": {
+        "show":1,
+        "when":"2024-05-10T19:45:00.000Z",
+        "location":1
+      }
+    }
+]
