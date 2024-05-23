@@ -10,6 +10,7 @@ from .ArtistType import *
 from .collaboration import *
 from .Cart import *
 from .Order import *
+from .tag import *
 
 
 # import direct unique
