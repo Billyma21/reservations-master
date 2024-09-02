@@ -1,9 +1,32 @@
+<style>
+    .logo-image {
+        height: 50px;
+        width: auto;
+    }
+    </style>
 {% extends 'layouts/base.html' %}
-
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 <div>
     <h1>{{ artist.firstname }} {{ artist.lastname }}</h1>
 </div>
+
+{% if troupe_affilie %}
+    <p>Troupe: {{ troupe_affilie.name }}</a></p>
+    {% if troupe_affilie.logo_url %}
+    <img src="{{ troupe_affilie.logo.url }}" alt="{{ troupe_affilie.name }} logo" class="logo-image">
+    {% endif %}
+{% else %}
+    <p>Non Affilie.</p>
+{% endif %}
+
+{% if user.is_superuser %}
+    <h3>Associer l'artiste a une troupe</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Associer</button>
+    </form>
+{% endif %}
 {% endblock %}
