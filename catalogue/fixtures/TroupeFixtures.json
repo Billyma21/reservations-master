@@ -1,0 +1,26 @@
+[
+    {
+        "model": "catalogue.troupe",
+        "fields": {
+            "name": "AHA",
+            "logo_url": "logoTroupe/logo_aha.jpg"
+        }
+    },
+
+    {
+        "model": "catalogue.troupe",
+        "fields": {
+            "name": "Funhaus",
+            "logo_url": "logoTroupe/logo_funhaus.png"
+        }
+    },
+       
+    {
+        "model": "catalogue.troupe",
+        "fields": {
+            "name": "Machinima",
+            "logo_url": "logoTroupe/logo_machinima.png"
+        }
+    }
+    
+]
