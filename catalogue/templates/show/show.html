@@ -32,6 +32,30 @@
                     {% else %}
                     <p class="card-text"><em>Non réservable</em></p>
                     {% endif %}
+
+                    <!--Boucle pour afficher video et message si aucune video associer au show-->>
+                    {% if videos %}
+                        {% for video in videos %}
+                        <h3>{{ video.title }}</h3>
+                            {% if "youtube.com" in video.video_url %}
+                                {% with video.video_url|slice:"-11:" as video_id %}
+                                    <iframe width="640" height="360" src="https://www.youtube.com/embed/{{ video_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                {% endwith %}
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                    <p><em>Aucune video disponible</em></p>
+                    {% endif %}
+
+                    {% if user.is_superuser %}
+                        <hr>
+                        <h3>Add a new video</h3>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Add Video</button>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
         </div>

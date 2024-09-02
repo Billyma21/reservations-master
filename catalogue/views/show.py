@@ -1,10 +1,11 @@
 # Bilal Ma - reservations\catalogue\views\show.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponseBadRequest
-from catalogue.models import Show, Cart
+from catalogue.models import Show, Cart, Video
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from catalogue.forms.videoForm import VideoForm
 
 
 
@@ -26,13 +27,37 @@ def show(request, show_id=None):
             show = Show.objects.get(id=show_id)
         except Show.DoesNotExist:
             raise Http404('Spectacle inexistant')
+
+        # Retrieve videos associated with the show
+        videos = Video.objects.filter(show=show)
+
+        # Handle video form submission
+        if request.method == 'POST':
+            form = VideoForm(request.POST)
+            if form.is_valid():
+                video = form.save(commit=False)
+                video.show = show
+                video.save()
+                messages.success(request, 'Video added successfully!')
+                return redirect('show_show', show_id=show.id)  # Redirect to avoid form resubmission
+        else:
+            form = VideoForm()
+
         title = "Fiche d'un spectacle"
-        return render(request, 'show/show.html', {'show': show, 'title': title})
+        return render(request, 'show/show.html', {
+            'show': show,
+            'title': title,
+            'videos': videos,  # Pass the videos to the template
+            'form': form  # Pass the form to the template
+        })
     else:
-        # Si aucun show_id n'est fourni, affichez la liste de tous les spectacles
         shows = Show.objects.filter(bookable=True)
         title = 'Liste des spectacles'
-        return render(request, 'show/index.html', {'shows': shows, 'title': title})
+        return render(request, 'show/index.html', {
+            'shows': shows,
+            'title': title
+        })
+
 
 
 
@@ -167,7 +192,9 @@ class Cart:
                 self.cart[show_id]['quantity'] -= quantity
             self.save()  
             
-        
+    # Verifie si user est un admin
+    def is_admin(user):
+        return user.is_superuser    
 
 
 

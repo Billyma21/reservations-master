@@ -11,6 +11,7 @@ from .collaboration import *
 from .Cart import *
 from .Order import *
 from .tag import *
+from .video import *
 
 
 # import direct unique

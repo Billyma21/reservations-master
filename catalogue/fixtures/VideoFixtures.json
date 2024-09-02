@@ -1,0 +1,11 @@
+[
+    {
+        "model": "catalogue.video",
+        "fields": {
+            "title": "Moiré Lights - Seaglass",
+            "video_url": "https://www.youtube.com/watch?v=ozPOlx-k5A0",
+            "show": 1
+        }
+    }
+    
+]

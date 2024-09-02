@@ -1,0 +1,11 @@
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:reservations-master}/db.sqlite3",
+            "name": "db_cataloguef"
+        }
+    ]
+}

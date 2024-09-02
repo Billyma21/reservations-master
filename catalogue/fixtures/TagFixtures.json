@@ -1,0 +1,18 @@
+[
+    {
+      "model": "catalogue.tag",
+      "pk": 1,
+      "fields": {
+        "tag": "comedie",
+        "show_id":2
+      }
+    },
+    {
+      "model": "catalogue.tag",
+      "pk": 2,
+      "fields": {
+        "tag": "drame",
+        "show_id":1
+      }
+    }
+  ]
