@@ -1,5 +1,6 @@
 # models artist
 from django.db import models
+from .troupe import *
 
 #API Auth & Permissions (pygments)
 from pygments.lexers import get_lexer_by_name
@@ -11,6 +12,9 @@ class Artist(models.Model):
     id = models.BigAutoField(primary_key=True, verbose_name="ID_artiste")
     firstname = models.CharField(max_length=60)
     lastname = models.CharField(max_length=60)
+
+    #Cle many to one (un artiste une troupe, une troupe plusieurs artistes)
+    troupe = models.ForeignKey(Troupe, on_delete=models.PROTECT, null=True, verbose_name="ID_troupe")
 
     #API Auth & Permissions
     #owner = models.ForeignKey('auth.User', related_name='artists', on_delete=models.CASCADE)

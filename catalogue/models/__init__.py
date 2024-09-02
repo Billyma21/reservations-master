@@ -12,6 +12,7 @@ from .Cart import *
 from .Order import *
 from .tag import *
 from .video import *
+from .troupe import *
 
 
 # import direct unique
